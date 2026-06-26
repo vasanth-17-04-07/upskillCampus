@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cloud Computing Project</title>
+
+<style>
+html{
+    scroll-behavior:smooth;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#eef5ff;
+overflow-x:hidden;
+}
+
+/* Navigation */
+
+header{
+background:#0f62fe;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 50px;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+header h1{
+color:white;
+cursor:pointer;
+transition:.4s;
+}
+
+header h1:hover{
+transform:rotate(-8deg) scale(1.1);
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    padding:8px 15px;
+    border-radius:6px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    background:white;
+    color:#0f62fe;
+}
+
+/* Floating Clouds */
+
+.cloud{
+position:absolute;
+font-size:55px;
+animation:cloudMove 20s linear infinite;
+opacity:.6;
+}
+
+.cloud:nth-child(1){
+top:80px;
+left:-100px;
+}
+
+.cloud:nth-child(2){
+top:200px;
+left:-200px;
+animation-delay:8s;
+}
+
+.cloud:nth-child(3){
+top:330px;
+left:-150px;
+animation-delay:14s;
+}
+
+@keyframes cloudMove{
+
+0%{
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(1700px);
+}
+
+}
+
+/* Hero */
+
+.hero{
+height:90vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:linear-gradient(135deg,#0f62fe,#42a5f5);
+color:white;
+text-align:center;
+}
+
+.hero h2{
+font-size:55px;
+animation:glow 2s infinite alternate;
+}
+
+.hero p{
+font-size:20px;
+margin-top:15px;
+}
+
+.hero button{
+margin-top:35px;
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:10px;
+background:white;
+color:#0f62fe;
+cursor:pointer;
+font-weight:bold;
+transition:.4s;
+}
+
+.hero button:hover{
+transform:translateY(-6px) scale(1.05);
+}
+
+@keyframes glow{
+
+from{
+text-shadow:0 0 8px white;
+}
+
+to{
+text-shadow:0 0 25px cyan;
+}
+
+}
+
+.container{
+
+width:90%;
+margin:auto;
+padding:50px 0;
+
+}
+
+/* Dashboard */
+
+.cards{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+
+}
+
+.card{
+
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,.15);
+text-align:center;
+transition:.4s;
+
+}
+
+.card:hover{
+
+transform:translateY(-12px) rotate(-2deg);
+
+}
+
+.card h2{
+
+font-size:40px;
+color:#0f62fe;
+
+}
+
+.card p{
+
+margin-top:10px;
+font-size:18px;
+
+}
+
+/* Upload */
+
+.upload{
+
+margin-top:50px;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,.15);
+
+}
+
+.upload h2{
+
+color:#0f62fe;
+margin-bottom:20px;
+
+}
+
+.upload input{
+
+padding:12px;
+
+}
+
+.upload button{
+
+padding:12px 30px;
+background:#0f62fe;
+border:none;
+color:white;
+border-radius:8px;
+cursor:pointer;
+margin-left:10px;
+
+}
+
+.upload button:hover{
+
+background:#0043ce;
+
+}
+
+/* Search */
+
+.search{
+
+margin-top:25px;
+
+}
+
+.search input{
+
+width:100%;
+padding:12px;
+border:1px solid #bbb;
+border-radius:8px;
+
+}
+
+/* Table */
+
+table{
+
+width:100%;
+border-collapse:collapse;
+margin-top:30px;
+
+}
+
+table th{
+
+background:#0f62fe;
+color:white;
+padding:15px;
+
+}
+
+table td{
+
+padding:15px;
+text-align:center;
+border-bottom:1px solid #ddd;
+
+}
+
+.actionBtn{
+
+padding:8px 15px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin:2px;
+
+}
+
+.download{
+
+background:#28a745;
+color:white;
+
+}
+
+.delete{
+
+background:red;
+color:white;
+
+}
+
+.share{
+
+background:orange;
+color:white;
+
+}
+
+/* Login Modal */
+
+.modal{
+
+display:none;
+position:fixed;
+top:0;
+left:0;
+height:100%;
+width:100%;
+background:rgba(0,0,0,.6);
+justify-content:center;
+align-items:center;
+
+}
+
+.modalContent{
+
+background:white;
+padding:35px;
+width:350px;
+border-radius:12px;
+text-align:center;
+
+}
+
+.modalContent input{
+
+width:100%;
+padding:12px;
+margin:12px 0;
+
+}
+
+.modalContent button{
+
+width:100%;
+padding:12px;
+background:#0f62fe;
+border:none;
+color:white;
+cursor:pointer;
+
+}
+
+
+/* HTML Starts */
+
+</style>
+
+</head>
+
+<body>
+
+<div class="cloud">☁️</div>
+<div class="cloud">☁️</div>
+<div class="cloud">☁️</div>
+
+<header>
+
+<h1>☁ Cloud Storage</h1>
+
+<nav>
+
+<a href="#">Home</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h2>Cloud Computing Project</h2>
+
+<p>Securely Upload, Download & Manage Your Files Anywhere</p>
+
+<button onclick="openLogin()">Get Started</button>
+
+</section>
+
+<div class="container">
+
+<div class="cards">
+
+<div class="card">
+<h2 id="totalFiles">0</h2>
+<p>Total Files</p>
+</div>
+
+<div class="card">
+<h2>1 TB</h2>
+<p>Cloud Storage</p>
+</div>
+
+<div class="card">
+<h2>24/7</h2>
+<p>Availability</p>
+</div>
+
+<div class="card">
+<h2>99%</h2>
+<p>Security</p>
+</div>
+
+</div>
+
+<div class="upload">
+
+<h2>📁 Upload File</h2>
+
+<input type="file" id="fileInput">
+
+<button onclick="uploadFile()">Upload</button>
+
+<div id="emoji" style="font-size:60px;display:none;">🎉</div>
+
+<div class="search">
+
+<input
+type="text"
+id="search"
+placeholder="Search Files..."
+onkeyup="searchFiles()">
+
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>File Name</th>
+<th>Status</th>
+<th>Download</th>
+<th>Delete</th>
+<th>Share</th>
+
+</tr>
+
+</thead>
+
+<tbody id="tableBody">
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- Login -->
+
+<div class="modal" id="loginModal">
+
+<div class="modalContent">
+
+<h2>Login</h2>
+
+<input type="text" placeholder="Username">
+
+<input type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+</div>
+
+</div>
+<!-- ================= ABOUT ================= -->
+
+<section id="about" class="container">
+
+<div class="about">
+
+<h2>About Cloud Storage</h2>
+
+<p>
+
+Cloud Storage System is a cloud computing mini project that demonstrates
+secure file management. Users can upload, organize, search, download,
+and delete files through a clean and responsive interface.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section class="container" id="contact">
+
+<h2 class="sectionTitle">
+
+Project Features
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h2>🔒</h2>
+<p>Secure Login</p>
+</div>
+
+<div class="card">
+<h2>☁️</h2>
+<p>Cloud Storage</p>
+</div>
+
+<div class="card">
+<h2>📤</h2>
+<p>Upload Files</p>
+</div>
+
+<div class="card">
+<h2>📥</h2>
+<p>Download Files</p>
+</div>
+
+<div class="card">
+<h2>🗑️</h2>
+<p>Delete Files</p>
+</div>
+
+<div class="card">
+<h2>📱</h2>
+<p>Responsive Design</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<section class="container">
+
+<div class="contact">
+
+<h2>Contact Us</h2>
+
+<input type="text" placeholder="Your Name">
+
+<input type="email" placeholder="Email Address">
+
+<textarea rows="6" placeholder="Your Message"></textarea>
+
+<br><br>
+
+<button onclick="sendMessage()">
+
+Send
+
+</button>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h2>Cloud Storage System</h2>
+
+<p>
+
+Cloud Computing Mini Project
+
+</p>
+
+<br>
+
+<p>
+
+HTML | CSS | JavaScript
+
+</p>
+
+<br>
+
+<p>
+
+© 2026 All Rights Reserved
+
+</p>
+
+</footer>
+
+<!-- Back To Top Button -->
+
+<button
+
+class="topBtn"
+
+onclick="topFunction()">
+
+↑
+
+</button>
+
+<!-- Notification -->
+
+<div id="toast">
+
+Success
+
+</div>
+
+<style>
+
+/* Section Title */
+
+.sectionTitle{
+
+text-align:center;
+
+color:#0f62fe;
+
+margin-bottom:30px;
+
+}
+
+/* About */
+
+.about{
+
+background:white;
+
+padding:40px;
+
+border-radius:12px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+.about h2{
+
+margin-bottom:20px;
+
+color:#0f62fe;
+
+}
+
+.about p{
+
+line-height:1.8;
+
+font-size:18px;
+
+}
+
+/* Contact */
+
+.contact{
+
+background:white;
+
+padding:35px;
+
+border-radius:12px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+.contact h2{
+
+color:#0f62fe;
+
+margin-bottom:20px;
+
+}
+
+.contact input,
+
+.contact textarea{
+
+width:100%;
+
+padding:14px;
+
+margin:10px 0;
+
+border:1px solid #ccc;
+
+border-radius:8px;
+
+font-size:16px;
+
+}
+
+.contact input:focus,
+
+.contact textarea:focus{
+
+outline:none;
+
+border-color:#0f62fe;
+
+box-shadow:0 0 8px rgba(15,98,254,.25);
+
+}
+
+/* Footer */
+
+footer{
+
+margin-top:60px;
+
+background:#0f62fe;
+
+color:white;
+
+text-align:center;
+
+padding:45px;
+
+}
+
+/* Top Button */
+
+.topBtn{
+
+position:fixed;
+
+bottom:25px;
+
+right:25px;
+
+width:50px;
+
+height:50px;
+
+border:none;
+
+background:#0f62fe;
+
+color:white;
+
+font-size:22px;
+
+border-radius:50%;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.topBtn:hover{
+
+transform:scale(1.1);
+
+}
+
+/* Toast */
+
+#toast{
+
+display:none;
+
+position:fixed;
+
+top:20px;
+
+right:20px;
+
+background:#28a745;
+
+color:white;
+
+padding:15px 25px;
+
+border-radius:8px;
+
+font-weight:bold;
+
+}
+
+/* Smooth Hover */
+
+button{
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:translateY(-3px);
+
+}
+
+/* Card Animation */
+
+.card{
+
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 15px 30px rgba(0,0,0,.2);
+
+}
+
+</style>
+<script>
+
+let files = [];
+
+function openLogin(){
+    document.getElementById("loginModal").style.display="flex";
+}
+
+function login(){
+
+    document.getElementById("loginModal").style.display="none";
+
+    showToast("Login Successful");
+
+}
+
+function uploadFile(){
+
+    const input=document.getElementById("fileInput");
+
+    if(input.files.length===0){
+
+        showToast("Please choose a file");
+
+        return;
+
+    }
+
+    const file=input.files[0];
+
+    files.push(file.name);
+
+    updateTable();
+
+    input.value="";
+
+    showToast("File Uploaded Successfully");
+
+}
+
+function updateTable(){
+
+    const table=document.getElementById("tableBody");
+
+    table.innerHTML="";
+
+    document.getElementById("totalFiles").innerHTML=files.length;
+
+    files.forEach((file,index)=>{
+
+        table.innerHTML+=`
+
+        <tr>
+
+        <td>${file}</td>
+
+        <td>Stored</td>
+
+        <td>
+
+        <button class="actionBtn download"
+
+        onclick="downloadFile('${file}')">
+
+        Download
+
+        </button>
+
+        </td>
+
+        <td>
+
+        <button class="actionBtn delete"
+
+        onclick="deleteFile(${index})">
+
+        Delete
+
+        </button>
+
+        </td>
+
+        <td>
+
+        <button class="actionBtn share"
+
+        onclick="shareFile('${file}')">
+
+        Share
+
+        </button>
+
+        </td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+
+function deleteFile(index){
+
+    files.splice(index,1);
+
+    updateTable();
+
+    showToast("File Deleted");
+
+}
+
+function downloadFile(file){
+
+    showToast(file+" Download Started");
+
+}
+
+function shareFile(file){
+
+    navigator.clipboard.writeText(file);
+
+    showToast("File Name Copied");
+
+}
+
+function searchFiles(){
+
+    let input=document.getElementById("search").value.toLowerCase();
+
+    let rows=document.querySelectorAll("#tableBody tr");
+
+    rows.forEach(row=>{
+
+        let text=row.innerText.toLowerCase();
+
+        row.style.display=text.includes(input)?"":"none";
+
+    });
+
+}
+
+function sendMessage(){
+
+    showToast("Message Sent Successfully");
+
+}
+
+function topFunction(){
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+function showToast(message){
+
+    let toast=document.getElementById("toast");
+
+    toast.innerHTML=message;
+
+    toast.style.display="block";
+
+    setTimeout(()=>{
+
+        toast.style.display="none";
+
+    },2500);
+
+}
+
+window.onclick=function(e){
+
+    let modal=document.getElementById("loginModal");
+
+    if(e.target==modal){
+
+        modal.style.display="none";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
